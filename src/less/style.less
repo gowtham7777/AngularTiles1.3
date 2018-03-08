@@ -1,0 +1,457 @@
+/* Styles go here */
+
+@body-bg-color: #83b692;    // green
+@text-color: #000;          // black
+@button-bg-color: #f9627d;  // pink
+@white: #ffffff;
+@baseLineHeight: 20px;
+
+/* LESS CSS */
+body {
+    background: #FFFFFF;
+    color: @text-color;
+    font-family: sans-serif;
+    text-align: center;
+}
+//a:link, a:visited {
+//    background: @button-bg-color;
+//    color: @text-color;
+//    display: inline-block;
+//    padding: 10px 10px;
+//    text-decoration: none;
+//}
+//a:hover {
+//    background-color: desaturate(@button-bg-color, 50%);
+//}
+//a:active {
+//    background-color: saturate(@button-bg-color, 50%);
+//}
+
+.userInfoCardMainDiv{
+    margin: 0 0 0 0; padding: 0;
+    width:299px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+
+
+.marker:after {
+    left: 78px;
+    bottom: -10px;
+    position: absolute;
+    content: ' ';
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #3E3E3E;
+}
+
+
+.wizard
+{
+    background-color: #3E3E3E;
+    border-left: 20px solid #ffffff;
+    color: #ffffff;
+    float: left; /* Why not display: inline-block? Because then the tiles will not float from beneath. */
+    overflow: hidden;
+    min-width: 1000px;
+    margin-bottom: 10px;
+    padding: 6px 8px 6px 8px;
+    width: 100%;
+}
+
+.fadeSlideIn {
+    height: 130px;
+    opacity: 1;
+    -webkit-transition: all linear 1.0s;
+    -moz-transition: all linear 1.0s;
+    -o-transition: all linear 1.0s;
+    transition: all linear 1.0s;
+}
+.fadeSlideIn.ng-hide-remove {
+    display: block !important;
+    height: 0;
+    opacity: 0;
+}
+
+/* Will transition towards this state. */
+.fadeSlideIn.ng-hide-remove.ng-hide-remove-active {
+    height: 129px;
+    opacity: 1;
+}
+.indexMainDiv
+{
+    padding-top: 60px;
+}
+
+.promoTile{
+  box-shadow: 0px 2px 25px rgba(0, 0, 0,.25);
+  padding:0px;
+}
+
+.phoneTitleNoPromoCode{
+  padding-bottom:5px;
+  margin-left: 10px;
+  text-align: left;
+
+
+  .manufacturer{
+    padding-left: 0px;
+  }
+}
+
+.phoneTitle
+{
+  text-align: left;
+  padding:0px 0px 0px 10px;
+}
+
+.pricingSection
+{
+padding-left: 10px;
+
+}
+
+.tmo-tile-split{
+   margin-bottom:5px;
+   margin-top:5px;
+   span{
+     display: inline-block;
+     text-align:left;
+   }
+   span.firstchild{
+     width:60%;
+   }
+   span.firstchildPromo{
+      width:65%;
+    }
+ }
+
+ .tmo-tile-split-short-text{
+   .tmo-tile-split;
+ }
+
+.recommended-sign-twoline{
+  display: table;
+  height:40px;
+  width: 100%;
+  background: #008CA7;
+
+
+  .content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    padding-left: 10px;
+    line-height: @baseLineHeight - 1;
+    h3{
+      color: @white;
+      line-height: 15px;
+      padding: 0px;
+      margin: 2px 0;
+      font-size: 80%;
+      font-weight: bold;
+    }
+  }
+}
+
+
+.tile-content{
+    padding: 15px;
+    // height: 208px;
+    overflow: auto;
+    h3{
+        line-height: 16px;
+        margin: 0 0 5px 0;
+        height: 30px;
+        overflow: hidden;
+    }
+
+    .device-img{
+        width: 44px;
+        height: 64px;
+        overflow: hidden;
+        float: left;
+
+
+    }
+    ul.device-content{
+        margin: 0;
+        list-style: none;
+        margin-left: 15px;
+        float:left;
+
+
+        li{
+            margin-bottom: 0px;
+            float: none;
+
+        }
+        .availability{
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    }
+    .tmo-label-split{
+        margin-bottom: 8px;
+    }
+    .tmo-label-split span:first-child{
+        width: 60%;
+    }
+    .tmo-label-split span{
+        width: 39%;
+    }
+
+    .tmo-icon-shopping-dtl-up-arrow{
+        display: none;
+    }
+
+    .btn-sec{
+        position: absolute;
+        width: 87%;
+        bottom: 15px;
+        left: 6%;
+        //margin: 0 auto;
+    }
+
+}
+
+.tmo-tile{
+    width: 250px;
+    height: 330px;
+    .tile-content{
+        .tmo-label-split{
+            margin-bottom: 10px;
+        }
+        .tmo-label-split span:first-child{
+            width: 100%;
+        }
+        .tmo-label-split span{
+            width: 100%;
+            text-align: left;
+        }
+
+        .tile-content .device-content{
+            margin-bottom: 15px !important;
+        }
+    }
+}
+
+.shadow{
+    -moz-box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);
+    -webkit-box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);
+    box-shadow: 0px 2px 25px #000000;
+}
+
+.score-soc{
+  width:200px;
+  padding:0px;
+}
+
+.navbar-default {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #008CA7;
+  font-size: large;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: #ffffff;
+
+  font-size: large;
+  font-weight: bold;
+}
+
+.nav.navbar-nav > li.dropdown.open > a,
+.nav.navbar-nav > li.dropdown.open > ul.dropdown-menu a:hover
+{
+  color: #fff;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.nav.navbar-nav > li.dropdown.open > a:focus {
+  background-color: #6dbcc9;
+}
+
+.card {
+  background: white;
+  width: 100%;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 40px;
+  text-align: center;
+  position: relative;
+  opacity: .95;
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 1px 0 rgba(0,0,0,.25);
+}
+
+.textintro h1 {
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  padding-bottom: 10px;
+}
+
+.squareDiv{
+  border: 1px solid #000000;
+  width: 425px;
+  height: auto;
+
+
+}
+.userPopUp {
+  position:relative ;
+  background: white;
+  width: 100%;
+  max-width: 423px;
+  max-height: 425px;
+  height:auto;
+  padding-top: 7px;
+  text-align: center;
+  position: relative;
+
+  border-radius: 4px;
+  border: 1px solid #e8e8e8;
+ // box-shadow: 0 1px 0 rgba(0,0,0,.25);
+}
+
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding-top: 0px;
+  padding-right: 20px;
+}
+
+.hr {
+
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 30px;
+}
+
+.rolesList
+{
+  li{
+    margin: 5px;
+    text-align: left;
+    padding-left:90px;
+  }
+}
+
+
+
+.breadcrumbs-v1{
+  position: relative;
+  //background-color: #ffffcc;
+  .btn{
+    line-height: 47px;
+    text-decoration:none;
+  }
+}
+
+.breadcrumbs-v1 ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumbs-v1 ul {
+  list-style: none;
+
+}
+.breadcrumbs-v1 ul li {
+  display: inline-block;
+  margin-right: -2px;
+  position: relative;
+}
+
+.breadcrumbs-v1 ul li a {
+  display: block;
+  float: left;
+  cursor:default;
+  text-align: center;
+  padding: 0px 40px 0 40px;
+  position: relative;
+  margin: 0 0px 0 0px;
+  font-size: 14px;
+  text-decoration: none;
+  color:#666666;
+
+}
+.breadcrumbs-v1 ul li:first-child a   {
+  padding-left:0px;
+}
+.breadcrumbs-v1 ul li a:after {
+  content: "________";
+  position: absolute; right: -30px; top: -8px;
+  z-index: 2;
+}
+
+.breadcrumbs-v1 ul li:last-child a:after {
+  content: "";
+}
+.breadcrumbs-v1 ul li a:focus {
+
+  cursor: pointer;
+
+}
+//current class
+.breadcrumbs-v1 ul li.current a {
+  color:#FF0000;
+}
+//visited class
+.breadcrumbs-v1 ul li a.visited {
+  color: #444444;
+  cursor: pointer;
+
+}
+
+.tmo-prepaid-container{
+
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+
+    & > [class^="col-"],
+    & > [class*=" col-"] {
+      padding-right: 7px;
+      padding-left: 7px;
+    }
+    & > [class*='col-']:first-child{
+      padding-right: 7px;
+      padding-left: 0px;
+    }
+  }
+  h1:first-child{
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+  .footer-btn{
+    padding-top: 15px;
+    padding-bottom: 30px;
+    .pull-right{
+      margin-right: 40px;
+    }
+  }
+
+}
+
+

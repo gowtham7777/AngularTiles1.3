@@ -1,0 +1,53 @@
+<div class="well promoTile">
+   <div ng-show="{{device.promoCode}}" class="recommended-sign-twoline" style="text-align:left;">
+<div class="content">
+       <h3>SCORE! Price</h3>
+        <h3>Promotional Price</h3>
+</div>
+   </div>
+<div>
+
+
+  <div class="phoneTitleNoPromoCode" ng-show="{{!device.promoCode}}">
+         <h3 style="font-size:15px;">{{device.manufacturer}}</h3>
+          <h3 style="font-size:15px;">{{device.device}}</h3>
+            <!--<span class="hidden">${{device?.sku}}</span>-->
+      <!--<span class="hidden">${{device?.searchName}}</span>-->
+      <!--<span class="hidden">${{device?.manufacturer}}</span>-->
+  </div>
+
+    <div class="phoneTitle" ng-show="{{device.promoCode}}">
+            <h3 style="font-size:15px;">{{device.deviceManufacturer}}</h3>
+              <!--<span class="hidden">${{device?.sku}}</span>-->
+        <!--<span class="hidden">${{device?.searchName}}</span>-->
+        <!--<span class="hidden">${{device?.manufacturer}}</span>-->
+    </div>
+    <div style="padding:0px">
+        <img uri=""/>
+            <span style="margin: 0 0 0 0; padding: 0;">
+                    <p style="margin: 0px 0 0 0; padding: 0;"><strong>{{device.inventoryStatus}}</strong></p>
+                     <p style="margin: 5px 0 0 0; padding: 0;">Est. Ship Date:
+                         <br/> {{device.fromDate}} to <br/> {{device.toDate}}
+                     </p>
+              <p style="margin: 5px 0 0 0; padding: 0px 0px 0px 10px;"><strong>Eligible for JUMP! On Demand</strong></p>
+            </span>
+    </div>
+    <div>
+            <div class="tmo-tile-split">
+                <span class="text-left firstchild">Full Retail Price:</span>
+                <span class="text-right">{{device.fullRetailPrice}}</span>
+            </div>
+            <div class="tmo-tile-split">
+                <span class="text-left firstchild">SCORE! Price:</span>
+                <span class="text-right">{{device.scorePrice}}</span>
+            </div>
+            <div class="tmo-tile-split">
+                <span class="text-left firstchildPromo">Promo Price:</span>
+                <span class="text-right"> {{device.promoPrice}} </span>
+            </div>
+    </div>
+    <div style="padding-bottom:10px;">
+          <button class="btn btn-lg btn-primary" style="width:220px;"> Select Device</button>
+    </div>
+</div>
+</div>

@@ -1,0 +1,147 @@
+manageAccount
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="device-portal-h1">Device Tracking Portal</h1>
+        <p>Select and enter one or more of the following: Account, IMEI, Mobile Number, RMA Number, Store ID to filter results.</p>
+        <nit-advanced-searchbox ng-model="tradeInTrackingData.searchParams" parameters="tradeInTrackingConstants.availableSearchParams"
+                                validate-callback="validateSearchParamsCallBack" placeholder="" ></nit-advanced-searchbox>
+        <p ng-show="searchParamsError" class="validation-msg">
+            <i class="tmo-icon-error"></i> {{searchParamsError}}
+        </p>
+        <p>Date range must be 6 months or less.</p>
+    </div>
+
+    <div class="col-sm-4 col-md-3">
+        <label class="input-group tmo-datepicker">
+            <span>Start date</span><br/>
+            <input type="text" class="form-control" datepicker-popup="MM/dd/yyyy" ng-model="tradeInTrackingData.searchDates.startDate"
+                   min-date="twoYearsBack" max-date="yesterday" is-open="startDateOpened"
+                   ng-click="startDateOpened=true" ng-change="validateSearchDates(tradeInTrackingData.searchDates)"
+                   datepicker-options="tradeInTrackingConstants.datePickerOptions" show-button-bar="false" readonly="readonly" style="width:120px; display:inline;"/>
+            <span class="btn btn-default" style="display: inline-block">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </span>
+        </label>
+    </div>
+
+    <div class="col-sm-4 col-md-5 margin-left-pull">
+        <label class="input-group tmo-datepicker">
+            <span>End date</span><br/>
+            <input type="text" class="form-control" datepicker-popup="MM/dd/yyyy" ng-model="tradeInTrackingData.searchDates.endDate"
+                   min-date="twoYearsBack" max-date="yesterday" is-open="endDateOpened"
+                   ng-click="endDateOpened=true" ng-change="validateSearchDates(tradeInTrackingData.searchDates)"
+                   datepicker-options="tradeInTrackingConstants.datePickerOptions" show-button-bar="false" readonly="readonly" style="width:120px; display:inline;"/>
+            <span class="btn btn-default" style="display: inline-block">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </span>
+        </label>
+    </div>
+    <div class="col-sm-4">
+        <br/>
+        <button ng-click="searchOrder()" ng-disabled="searchParamsError || searchDateError || searchBoxPristine || !tradeInTrackingData.searchDates.startDate || !tradeInTrackingData.searchDates.endDate"
+                class="btn btn-default pull-right">Search</button>
+    </div>
+    <div class="col-sm-12 validation-msg" ng-show="searchDateError" style="margin-top: 0">
+        <i class="tmo-icon-error"></i> {{searchDateError}}
+    </div>
+
+    <div class="col-sm-12 serach-results-top">
+        <p style="margin-bottom: 2px;">Results ({{tradeInTrackingData.orders.length}} records found)</p>
+        <table class="table tmo-table-fixed" ng-if="!tradeInTrackingData.bulkSearch">
+            <thead>
+            <tr>
+                <th class="col-xs-2" ng-click="orderBy('date')">
+                    <span>Date</span>
+                    <i class="tmo-margin-left-10" ng-show="predicate === 'date'" ng-class="reverse?'tmo-icon-sort-arrow-up-blue':'tmo-icon-sort-arrow-down-blue'"></i>
+                </th>
+                <th class="col-xs-3" ng-click="orderBy('mobileNo')">
+                    <span>Mobile Number</span>
+                    <i class="tmo-margin-left-10" ng-show="predicate === 'mobileNo'" ng-class="reverse?'tmo-icon-sort-arrow-up-blue':'tmo-icon-sort-arrow-down-blue'"></i>
+                </th>
+                <th class="col-xs-5" ng-click="orderBy('serialNo')">
+                    <span>IMEI / MEID / MAC ID</span>
+                    <i class="tmo-margin-left-10" ng-show="predicate === 'serialNo'" ng-class="reverse?'tmo-icon-sort-arrow-up-blue':'tmo-icon-sort-arrow-down-blue'"></i>
+                </th>
+                <th class="col-xs-2" ng-click="orderBy('status')">
+                    <span>Offer Status</span>
+                    <i class="tmo-margin-left-10" ng-show="predicate === 'status'" ng-class="reverse?'tmo-icon-sort-arrow-up-blue':'tmo-icon-sort-arrow-down-blue'"></i>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in tradeInTrackingData.orders | orderBy:predicate:reverse | limitTo:tradeInTrackingConstants.pagination.limitTo track by $index" ng-click="selectOrder(order)" ng-dblclick="tradeInTrackingData.selectedOrderRmaNo != undefined ?gotoDetailsPage(tradeInTrackingData.selectedOrderRmaNo):''" ng-class="order.selected? 'active-row':''">
+                <td class="col-xs-2">{{order.date | date : 'shortDate'}}</td>
+                <td class="col-xs-3">{{order.mobileNo | subscriberFormat}}</td>
+                <td class="col-xs-5">{{order.serialNo}}</td>
+                <td class="col-xs-2">{{tradeInTrackingConstants.tradeInType[order.status] != undefined ? tradeInTrackingConstants.tradeInType[order.status] : order.status}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table tmo-table-fixed" ng-if="tradeInTrackingData.bulkSearch">
+            <thead>
+            <tr>
+                <th class="col-xs-2">Offer Generated</span>
+                    <i class="pull-right" ></i></span>
+                    <br /><span>Amount</span>
+                    <i class="pull-right"  ></i></span>
+                </th>
+                <th class="col-xs-1">Status</span>
+                    <i class="pull-right"></i></span>
+                    <br /><span>Program</span>
+                    <i class="pull-right" ></i></span>
+                </th>
+                <th class="col-xs-2">RMA Number</span>
+                    <i class="pull-right"  ></i></span>
+                    <br /><span>IMEI / MEID / MAC ID</span>
+                    <i class="pull-right" ></i></span>
+                </th>
+                <th class="col-xs-4"><span>Manufacturer</span>
+                    <i class="pull-right" ></i></span>
+                    <br /><span>Description</span>
+                    <i class="pull-right"></i></span>
+                </th>
+                <th class="col-xs-2"><span>Mobile Number</span>
+                    <i class="pull-right"></i></span>
+                    <br /><span>Account Number</span>
+                    <i class="pull-right" ></i></span>
+                </th>
+                <th class="col-xs-1"><span>Channel</span>
+                    <i class="pull-right" ></i></span>
+                    <br /><span>User ID</span>
+                    <i class="pull-right" ></i></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in tradeInTrackingData.orders | limitTo:tradeInTrackingConstants.pagination.limitTo track by $index" ng-click="selectOrder(order)" ng-dblclick="tradeInTrackingData.selectedOrderRmaNo != undefined ?gotoDetailsPage(tradeInTrackingData.selectedOrderRmaNo):''" ng-class="order.selected? 'active-row':''">
+                <td class="col-xs-2">{{order.date | date : 'shortDate'}}<br />{{order.offerAmt | currency:"$"}}</td>
+                <td class="col-xs-1">{{tradeInTrackingConstants.tradeInType[order.status] != undefined ? tradeInTrackingConstants.tradeInType[order.status] : order.status}}<br />{{order.program}}</td>
+                <td class="col-xs-2">{{order.rmaNo}}<br />{{order.serialNo}}</td>
+                <td class="col-xs-4">{{order.mfgName}}<br />{{order.mfgDesc}}</td>
+                <td class="col-xs-2">{{order.mobileNo | subscriberFormat}}<br />{{order.accountNo | accountNumberFormat}}</td>
+                <td class="col-xs-1">{{order.channel}}<br />{{order.userId}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-sm-12">
+        <span >
+
+        </span>
+
+        <span >
+
+        </span>
+        <span class="pull-right">
+             <button ng-if="tradeInTrackingData.bulkSearch" style="margin-right: 15px;"  class="btn btn-default" ng-disabled="tradeInTrackingData.orders.length == 0" ng-csv="tradeInTrackingData.orders" csv-header="tradeInTrackingConstants.colHeaders"  filename="{{tradeInTrackingConstants.exportFileName}}">Export to Excel</button>
+            <button ng-if="tradeInTrackingData.bulkSearch && isPostGoodsEnabled"  class="btn btn-default" style="margin-right: 15px;" id="postGoodsBtn"  ng-disabled="!tradeInTrackingData.searchParams.storeId"  ng-click="gotoGINPage()" >Goods Issue Notices</button>
+            <button ng-click="gotoDetailsPage(tradeInTrackingData.selectedOrderRmaNo)" ng-disabled="tradeInTrackingData.selectedOrderRmaNo == undefined" class="btn btn-primary pull-right">View Details</button>
+        </span>
+        <div ng-show="orderDetailsError" class="col-sm-12">
+            <i class="tmo-icon-system-error"></i> {{tradeInTrackingData.orderDetailsError}}
+        </div>
+    </div>
+</div>

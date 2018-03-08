@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<base href="localhost:8000/src/index.html#/accountReview"/>-->
+    <title>Angular Registration</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/angular-animate/angular-animate.min.js"></script>
+
+    <!--https://firebase.google.com/docs/admin/setup-->
+    <!--<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>-->
+    <!--<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>-->
+
+    <link rel="stylesheet" href="../dist/css/style.css" />
+    <script src="script.js"></script>
+</head>
+
+
+<body ng-controller="mainCtrl" class="container">
+
+<div class="container" style="height: 20px">
+    <ul class="">
+        <a ui-sref="login" class="pull-right" style="padding-top:0px;">Login/Register</a>
+    </ul>
+</div>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="accountReview">Account-Review</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" ui-sref="applications">Applications  <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="QVXP">Angular</a></li>
+                    <li><a ui-sref="hso">HSO</a></li>
+                    <li><a ui-sref="rebillion">Rebillion</a></li>
+                </ul>
+            </li>
+            <li class="active"><a ui-sref="manageAccount">Manage Account</a></li>
+            <li><a ui-sref="usageBilling">Usage & Billing</a></li>
+            <li><a ui-sref="deviceSupport">Device Support </a></li>
+            <li><a ui-sref="order">Order</a></li>
+            <li><a ui-sref="offers">Offers</a></li>
+            <li><a ui-sref="memos">Memos</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+    <div ui-view></div>
+
+</div>
+
+
+<!--<div class="container indexMainDiv" style="padding-top:30px">-->
+<!--<div class="row">-->
+<!--<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 indexMainDiv" ng-repeat="user in users">-->
+<!--<user-info-card user="user" collapsed="false"></user-info-card>-->
+<!--&lt;!&ndash;<div class="wizard fadeSlideIn" ng-repeat-end>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="close">X</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div>This is Title</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div style="clear: both"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+    <!--<div class="container indexMainDiv">-->
+        <!--<div class="row">-->
+            <!--<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="device in devices">-->
+                <!--<promo-tile device="device"></promo-tile>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+</body>
+</html>

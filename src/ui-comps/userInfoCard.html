@@ -1,0 +1,20 @@
+<div class="well" style="box-shadow: 0px 2px 25px rgba(0, 0, 0, .25);">
+  <div  ng-click="collapse(this)">{{user.name}}</div>
+  <div change-color="user.level grey green pink orange" ng-hide="collapsed">
+    <address></address>
+
+    <h4>Friends:</h4>
+    <ul>
+      <li ng-repeat='friend in user.friends'>
+        {{friend}}
+        <remove-friend method="removeFriend(friend)"></remove-friend>
+
+      </li>
+    </ul>
+    <div ng-show="!!user.rank">
+      Rank: {{user.rank}}
+    </div>
+    <!--<button ng-show="!user.rank" class="btn btn-success" ng-click="knightMe(user)">Knight Me</button>-->
+    <button class="btn btn-success" ng-click="changeState(user)" ng-show="{{user.level}}">Change BgColor</button>
+  </div>
+</div>
