@@ -11,6 +11,7 @@ To check-out the code use https://github.com/gowtham7777/GspTilesInAngular2.git 
 * Open browser **localhost:8000/src/index.html** should open the application.
 
 
+
 --docker setup in windows 
 
 Docker installation, Building and running Angular App. 
