@@ -1,4 +1,4 @@
-To check-out the code use https://github.com/gowtham7777/GspTilesInAngular2.git from eclipse/Intellij
+To check-out the code use https://github.com/gowtham7777/AngularTiles1.3.git from eclipse/Intellij
 
 * Should have NODEJS installed in your machine.
 
