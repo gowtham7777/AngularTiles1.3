@@ -21,7 +21,7 @@
     "bootstrap": "^3.1.1",
     "firebase": "^3.6.9",
     "css-loader": "^0.25.0",
-    "eslint": "^3.8.1",
+    "eslint": "^6.8.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "gulp-cssmin": "^0.1.7",
